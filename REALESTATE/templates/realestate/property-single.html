@@ -1,0 +1,337 @@
+{% extends 'realestate/layout.html' %}
+{% block content %}
+
+
+
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{propertyy.location}}</h1>
+              <span class="color-text-a">FOR: {{propertyy.list}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="property-grid.html">Properties</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  {{propertyy.tag}}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper">
+             
+                <div class="carousel-item-b swiper-slide">
+                  
+                  <img class= "image-resize" src="{{propertyy.main_photo.url}}" alt="" style="height: 500px; width: 800px; object-fit: cover ; object-position: center center;">
+                  
+                  
+                </div>
+
+                <div class="carousel-item-b swiper-slide">
+                  
+                  
+                  <img src="{{propertyy.photo_1.url}}" alt="" style="height: 500px;width: 800px;">
+                  
+                </div>
+
+                <div class="carousel-item-b swiper-slide">
+                  
+                  <img src="{{propertyy.photo_2.url}}" alt="" style="height: 500px;width: 800px;">
+                  
+                </div>
+
+                <div class="carousel-item-b swiper-slide">
+                  
+                  <img src="{{propertyy.photo_3.url}}" alt="" style="height: 500px;width: 800px;">
+                  
+                </div>
+
+                <div class="carousel-item-b swiper-slide">
+                  
+                  <img src="{{propertyy.photo_4.url}}" alt="" style="height: 500px;width: 800px;">
+                  
+                </div>
+
+                <div class="carousel-item-b swiper-slide">
+                  
+                  <img src="{{propertyy.photo_5.url}}" alt="" style="height: 500px;width: 800px;">
+                  
+                </div>
+
+                
+              </div>
+            </div>
+            
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price d-flex justify-content-center foo">
+                  <div class="card-header-c d-flex">
+                    <div class="card-box-ico">
+                      <span class="bi bi-cash"></span>
+                    </div>
+                    <div class="card-title-c align-self-center">
+                      <h5 class="title-c">{{propertyy.price}}</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Quick Summary</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list">
+                      <li class="d-flex justify-content-between">
+                        <strong>Property ID:</strong>
+                        <span>{{propertyy.id}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Location:</strong>
+                        <span>{{propertyy.location}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Property Type:</strong>
+                        <span>{{propertyy.tag}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Status:</strong>
+                        <span>{{propertyy.list}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Area:</strong>
+                        <span>{{propertyy.size_of_land}}
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Beds:</strong>
+                        <span>{{propertyy.no_of_bedroom}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Baths:</strong>
+                        <span>{{propertyy.no_of_bathroom}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Availability:</strong>
+                        <span>{{propertyy.availability}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Property Description</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a">
+                   {{propertyy.description}}
+                  </p>
+                </div>
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Amenities</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">
+                    {% if propertyy.Security %}
+                      <li>Security <input type="checkbox" checked disabled></li>
+                    {% else %}
+                      <li>Security <input type="checkbox" disabled></li>
+                    {% endif %}
+                
+                    {% if propertyy.Parking %}
+                      <li>Parking <input type="checkbox" checked disabled></li>
+                    {% else %}
+                      <li>Parking <input type="checkbox" disabled></li>
+                    {% endif %}
+                
+                    {% if propertyy.Internet %}
+                      <li>Internet <input type="checkbox" checked disabled></li>
+                    {% else %}
+                      <li>Internet <input type="checkbox" disabled></li>
+                    {% endif %}
+                
+                    {% if propertyy.Playground %}
+                      <li>Playground <input type="checkbox" checked disabled></li>
+                    {% else %}
+                      <li>Playground <input type="checkbox" disabled></li>
+                    {% endif %}
+
+                    {% if propertyy.Furnished %}
+                    <li>Furnished <input type="checkbox" checked disabled></li>
+                  {% else %}
+                    <li>Furnished <input type="checkbox" disabled></li>
+                  {% endif %}
+              
+                  {% if propertyy.Near_Shopping_Mall %}
+                    <li>Near Shopping Mall <input type="checkbox" checked disabled></li>
+                  {% else %}
+                    <li>Near Shopping Mall <input type="checkbox" disabled></li>
+                  {% endif %}
+              
+                  {% if propertyy.Balcony %}
+                    <li>Balcony <input type="checkbox" checked disabled></li>
+                  {% else %}
+                    <li>Balcony <input type="checkbox" disabled></li>
+                  {% endif %}
+              
+                  {% if propertyy.Backup_water_supply %}
+                    <li>Backup Water Supply <input type="checkbox" checked disabled></li>
+                  {% else %}
+                    <li>Backup Water Supply <input type="checkbox" disabled></li>
+                  {% endif %}
+              
+                  {% if propertyy.Backup_electricity_supply %}
+                    <li>Backup Electricity Supply <input type="checkbox" checked disabled></li>
+                  {% else %}
+                    <li>Backup Electricity Supply <input type="checkbox" disabled></li>
+                  {% endif %}
+                </ul>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+           
+          </div>
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Contact Agent</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+               
+                <img src="{{propertyy.realtor.profile_pic.url}}"  class="agent-avatar img-fluid">
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="property-agent">
+                  <h4 class="title-agent">{{propertyy.realtor.First_name}} {{propertyy.realtor.Last_name}}</h4>
+                  <p class="color-text-a">
+                    Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+                    dui. Quisque velit nisi,
+                    pretium ut lacinia in, elementum id enim.
+                  </p>
+                  <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between">
+                      <strong>Phone:</strong>
+                      <span class="color-text-a">{{propertyy.realtor.phone_no}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Mobile:</strong>
+                      <span class="color-text-a">777 287 378 737</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Email:</strong>
+                      <span class="color-text-a">{{propertyy.realtor.email}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Skype:</strong>
+                      <span class="color-text-a">Annabela.ge</span>
+                    </li>
+                  </ul>
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4">
+                <div class="property-contact">
+                  <form class="form-a">
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-a">Send Message</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Property Single-->
+
+  </main><!-- End #main -->
+
+  {%  endblock%}

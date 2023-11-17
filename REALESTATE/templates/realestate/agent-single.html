@@ -1,0 +1,201 @@
+{% extends 'realestate/layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<main id="main">
+
+  <!-- ======= Intro Single ======= -->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{current_realtor.user}}</h1>
+            <span class="color-text-a">{{current_realtor.type}}</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">Realtor</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{current_realtor.First_name}}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Intro Single -->
+
+  <!-- ======= Agent Single ======= -->
+  <section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="agent-avatar-box">
+                <img src="{{current_realtor.profile_pic.url}}"  class="agent-avatar img-fluid">
+              </div>
+            </div>
+            <div class="col-md-5 section-md-t3">
+              <div class="agent-info-box">
+                <div class="agent-title">
+                  <div class="title-box-d">
+                    <p> Welcome to create a Listing click on button above </p>
+                    <h3 class="title-d">{{current_realtor.First_name}} {{current_realtor.Last_name}}</h3>
+                    </h3>
+                  </div>
+                </div>
+                <div class="agent-content mb-3">
+                  <p class="content-d color-text-a">
+                    {{current_realtor.description}}
+                  </p>
+                  <div class="info-agents color-a">
+                   
+                    <p>
+                      <strong>Type:  </strong>
+                      <span class="color-text-a"> {{current_realtor.type}}</span>
+                    </p>
+                    <p>
+                      <strong>Phone:  </strong>
+                      <span class="color-text-a"> {{current_realtor.phone_no}} </span>
+                    </p>
+                    <p>
+                      <strong>Email:  </strong>
+                      <span class="color-text-a"> {{current_realtor.email}}</span>
+                    </p>
+                    <p>
+                      <strong>WhatsApp:  </strong>
+                      <span class="color-text-a"> {{current_realtor.WhatsApp_no}}</span>
+                    </p>
+                    
+                  </div>
+                </div>
+                <div class="socials-footer">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="bi bi-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="bi bi-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                </div>
+              </div>
+              <a type="button" class="btn " style="background-color: #2eca6a;" href="{% url 'userProfile' %}">Update your Profile</a></h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">My Listed Properties ({{properties_count}}) 
+           <!-- <a type="button" class="btn " style="background-color: #2eca6a;" href="{% url 'list_property' %}">Add property</a></h3>-->
+          </div>
+        </div>
+
+        <div class="row property-grid grid">  
+          <div class="col-sm-12">
+            <div class="grid-option">
+              
+
+              <form>
+                <select class="custom-select">
+                  <option selected>All</option>
+                  <option value="1">New to Old</option>
+                  <option value="2">For Rent</option>
+                  <option value="3">For Sale</option>
+                </select>
+              </form>
+            </div>
+          </div>
+          {% for property in properties %}
+          
+         
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{property.main_photo.url}}" style="height: 500px;width: 800px;" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">{{property.location}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">{{property.list}} | KSH {{property.price}}</span>
+                    </div>
+                    <a href="{% url 'property' pk=property.id %}" property-single.html" class="link-a">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>{{property.size_of_land}}
+
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>{{property.no_of_bedroom}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>{{property.no_of_bathroom}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                </div>
+               
+              </div>
+              
+            </div>
+            <a type="button" class="btn btn-success" href="{% url 'update_property' property.id %}">Update</a>
+            <a type="button" class="btn btn-danger" href="{% url 'delete_property' property.id  %}">Delete</a>
+          </div>
+
+          {% endfor %}
+          
+          
+
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </section><!-- End Agent Single -->
+
+
+  {% endblock%}

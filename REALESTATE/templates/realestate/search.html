@@ -1,0 +1,24 @@
+{% load static%}
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+
+    
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form action="" method="get" >
+        {% csrf_token %}
+       {{myFilter.form}}
+       
+        
+        
+    
+        <input type="submit" name="Submit">
+    </form>
+    
+    </div>
+  </div><!-- End Property Search Section -->
